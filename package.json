@@ -1,0 +1,17 @@
+{
+  "name": "kraii",
+  "version": "0.0.1",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "bun app/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "hsmyc",
+  "license": "ISC",
+  "description": "This is a simple server with statemanager.",
+  "devDependencies": {
+    "@types/bun": "^1.1.10"
+  }
+}
