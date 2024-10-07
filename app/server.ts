@@ -6,9 +6,7 @@ Bun.serve({
     const routes = await CreateRouter();
     const url = new URL(req.url);
     const pathname = url.pathname;
-    console.log("pathname", pathname);
     const route = routes[pathname];
-    console.log("route", route);
     if (route) {
       return ServeFile(route.fullPath, route.contentType);
     } else if (pathname === "/") {
