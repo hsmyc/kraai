@@ -1,24 +1,45 @@
-// TODO: There will be 3 or 4 way of state management. 1. Global state 2.Local state 3.Proxy state 4. State Machine
+import { StateManager } from "./core/statemanager";
 
-import { SObject } from "./core/sobject";
+const cstate = { id: 0, value: 0 };
+const mstate = { id: 1, value: "Osman" };
+const manager = new StateManager([cstate, mstate]);
 
-const Object = new SObject({
-  id: "1",
-  nodes: [
-    {
-      id: "1",
-      name: "one",
-      child: {
-        id: "2",
-        age: { id: 1, name: "osman" },
-        child: {
-          id: "3",
-          name: "three",
-        },
-      },
-    },
-  ],
+function increment() {
+  const { id, value } = manager.getState(cstate.id);
+  manager.setState({ id, value: value + 1 }, () =>
+    renderElement(cEl as HTMLElement, id)
+  );
+}
+
+function decrement() {
+  const { id, value } = manager.getState(cstate.id);
+  manager.setState({ id: id, value: value - 1 }, () =>
+    renderElement(cEl as HTMLElement, id)
+  );
+}
+
+const iEl = document.getElementById("increment");
+const dEl = document.getElementById("decrement");
+const cEl = document.getElementById("count");
+const mEl = document.getElementById("message");
+const inputEl = document.getElementById("input");
+
+iEl?.addEventListener("click", increment);
+dEl?.addEventListener("click", decrement);
+inputEl?.addEventListener("input", (e) => {
+  const val = (e.target as HTMLInputElement).value;
+  const { id } = manager.getState(mstate.id);
+  manager.setState({ id, value: val }, () =>
+    renderElement(mEl as HTMLElement, id)
+  );
 });
+function renderElement(element: HTMLElement, stateId: number) {
+  element.innerText = manager.getState(stateId).value.toString();
+}
 
-console.log("osman");
-console.log(Object.getAllValues());
+function render() {
+  renderElement(cEl!, cstate.id);
+  renderElement(mEl!, mstate.id);
+}
+
+render();

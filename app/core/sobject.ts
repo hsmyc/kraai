@@ -11,7 +11,6 @@ export type Store<V = string> = {
 
 export class SObject<V = string> {
   private store: Store<V>;
-
   constructor(store: Store<V>) {
     this.store = store;
   }
