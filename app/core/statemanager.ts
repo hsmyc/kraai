@@ -18,6 +18,9 @@ export class StateManager {
     const newVal = this.newState.find((s) => s.id === id)?.value;
     return oldVal !== newVal;
   }
+  private createId(): number {
+    return this.newState.length;
+  }
   public getState(id: number): State {
     return this.newState.find((s) => s.id === id)!;
   }
@@ -35,4 +38,11 @@ export class StateManager {
   public getCache(): Map<string, State[]> {
     return this.cache;
   }
+}
+
+// Create a function will take an any type of value and create a StateManager instance with the given value.
+
+export default function state(value: any): StateManager {
+  const state = { id: 0, value };
+  return new StateManager([state]);
 }
