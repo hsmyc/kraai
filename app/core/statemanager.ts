@@ -9,9 +9,9 @@ export class StateManager {
   private cache: Map<string, State[]> = new Map();
 
   constructor(state: State[]) {
-    this.oldState = [...state]; // Make a copy
-    this.newState = [...state]; // Make a copy
-    this.cache.set(JSON.stringify(state), state); // Cache state as a stringified key
+    this.oldState = [...state];
+    this.newState = [...state];
+    this.cache.set(JSON.stringify(state), state);
   }
   private refresher(id: number): boolean {
     const oldVal = this.oldState.find((s) => s.id === id)?.value;
