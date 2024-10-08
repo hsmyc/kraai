@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "bun app/server.ts",
+    "dev": "bun app/bundler.ts && bun app/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

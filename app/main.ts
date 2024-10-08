@@ -1,6 +1,6 @@
 // TODO: There will be 3 or 4 way of state management. 1. Global state 2.Local state 3.Proxy state 4. State Machine
 
-import { SObject } from "./types.js";
+import { SObject } from "./core/sobject";
 
 const Object = new SObject({
   id: "1",
@@ -20,4 +20,5 @@ const Object = new SObject({
   ],
 });
 
+console.log("osman");
 console.log(Object.getAllValues());
