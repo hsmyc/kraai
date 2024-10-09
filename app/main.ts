@@ -25,8 +25,13 @@ iEl?.addEventListener("click", increment);
 dEl?.addEventListener("click", decrement);
 dataEl?.addEventListener("click", getResource);
 
-function render() {
-  cEl!.innerText = value.get().toString();
+function render(v: any) {
+  cEl!.innerText = v;
+}
+
+function renderData(v: any) {
+  dataEl!.innerText = v;
 }
 
 value.subscribe(render);
+value.subscribe(renderData);
