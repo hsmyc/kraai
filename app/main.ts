@@ -1,45 +1,32 @@
-import { StateManager } from "./core/statemanager";
+import O from "./core/observer";
 
-const cstate = { id: 0, value: 0 };
-const mstate = { id: 1, value: "Osman" };
-const manager = new StateManager([cstate, mstate]);
+const value = O(0);
+
+const cEl = document.getElementById("count");
+const iEl = document.getElementById("increment");
+const dEl = document.getElementById("decrement");
+const dataEl = document.getElementById("data");
 
 function increment() {
-  const { id, value } = manager.getState(cstate.id);
-  manager.setState({ id, value: value + 1 }, () =>
-    renderElement(cEl as HTMLElement, id)
-  );
+  value.set(value.get() + 1);
 }
 
 function decrement() {
-  const { id, value } = manager.getState(cstate.id);
-  manager.setState({ id: id, value: value - 1 }, () =>
-    renderElement(cEl as HTMLElement, id)
-  );
+  value.set(value.get() - 1);
 }
-
-const iEl = document.getElementById("increment");
-const dEl = document.getElementById("decrement");
-const cEl = document.getElementById("count");
-const mEl = document.getElementById("message");
-const inputEl = document.getElementById("input");
-
+async function getResource() {
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then((response) => response.json())
+    .then((data) => {
+      value.set(data.body);
+    });
+}
 iEl?.addEventListener("click", increment);
 dEl?.addEventListener("click", decrement);
-inputEl?.addEventListener("input", (e) => {
-  const val = (e.target as HTMLInputElement).value;
-  const { id } = manager.getState(mstate.id);
-  manager.setState({ id, value: val }, () =>
-    renderElement(mEl as HTMLElement, id)
-  );
-});
-function renderElement(element: HTMLElement, stateId: number) {
-  element.innerText = manager.getState(stateId).value.toString();
-}
+dataEl?.addEventListener("click", getResource);
 
 function render() {
-  renderElement(cEl!, cstate.id);
-  renderElement(mEl!, mstate.id);
+  cEl!.innerText = value.get().toString();
 }
 
-render();
+value.subscribe(render);
