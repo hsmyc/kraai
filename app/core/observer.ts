@@ -17,7 +17,14 @@ export default function createObserver<T>(initialValue: T) {
     },
     set: (newValue: T) => {
       if (value !== newValue) {
-        value = newValue;
+        value = structuredClone(newValue);
+        notify();
+      }
+    },
+    update: (updateFn: (currentValue: T) => T) => {
+      const newValue = updateFn(value);
+      if (value !== newValue) {
+        value = structuredClone(newValue);
         notify();
       }
     },
