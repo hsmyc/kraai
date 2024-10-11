@@ -27,11 +27,11 @@ const MIMETYPES: MIMETYPES = {
 };
 
 export default async function CreateRouter() {
-  const files = await fs.readdir("app/static", { withFileTypes: true });
+  const files = await fs.readdir("app/examples", { withFileTypes: true });
   const pathMap: PathMap = {};
 
   files.forEach((file) => {
-    const fullPath = path.join("app/static", file.name);
+    const fullPath = path.join("app/examples", file.name);
     const relativePath = path.join("/", file.name);
     if (file.isDirectory()) {
       Object.assign(pathMap, CreateRouter());

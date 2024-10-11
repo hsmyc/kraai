@@ -29,7 +29,7 @@ const [_3, setData, subData] = createState({});
 // DOM Elements
 const cEl = document.getElementById("count");
 const sCel = document.getElementById("scount");
-const dCel = document.getElementById("dcount");
+const dCel = document.getElementById("name2");
 const iEl = document.getElementById("increment");
 const dEl = document.getElementById("decrement");
 const diEl = document.getElementById("name");
@@ -87,6 +87,9 @@ function renderData(v: any) {
 }
 
 function renderData2(v: any) {
+  dCel!.style.border = "1px solid black";
+  dCel!.style.maxWidth = "200px";
+  dCel!.style.color = "red";
   dCel!.innerText = `${v.no} ${v.name.first} ${v.name.last}`;
 }
 

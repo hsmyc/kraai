@@ -10,7 +10,7 @@ Bun.serve({
     if (route) {
       return ServeFile(route.fullPath, route.contentType);
     } else if (pathname === "/") {
-      return ServeFile("app/static/index.html", "text/html");
+      return ServeFile("app/examples/index.html", "text/html");
     }
     return new Response("Not Found", { status: 404 });
   },
