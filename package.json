@@ -12,9 +12,6 @@
   "license": "ISC",
   "description": "This is a simple server with statemanager.",
   "devDependencies": {
-    "@types/bun": "^1.1.10",
-    "@types/jest": "^29.5.13",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.2.5"
+    "@types/bun": "^1.1.11"
   }
 }
