@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "hsmyc",
-  "license": "ISC",
+  "license": "MIT",
   "description": "This is a simple server with statemanager.",
   "devDependencies": {
     "@types/bun": "^1.1.11"
