@@ -13,33 +13,46 @@ This project provides a flexible and efficient state management system for handl
 
 ## Installation
 
-1. Clone the repository:
+To use @yucedev/kraai directly in your project, install it via your preferred package manager:
 
-   ```bash
-   git clone https://github.com/hsmyc/kraai.git
-   cd project-name
-   ```
+### Using bun
 
-2. Install dependencies:
-   ```bash
-   bun install
-   ```
+```bash
+bunx jsr add @yucedev/kraai
+```
+
+### Using npm
+
+```bash
+npx jsr add @yucedev/kraai
+```
+
+### Using deno
+
+```bash
+deno add jsr:@yucedev/kraai
+```
+
+### Using yarn
+
+```bash
+yarn dlx jsr add @yucedev/kraai
+```
+
+### Using pnpm
+
+```bash
+pnpm dlx jsr add @yucedev/kraai
+```
 
 ## Usage
 
-### Running the Project
-
-To run the app locally, use:
-
-```bash
-bun run dev
-```
-
 ### Creating a State
 
-You can create a state using the `createState` function:
+After installing `@yucedev/kraai`, you can start using it by importing and creating your first state:
 
 ```typescript
+import { createState } from "@yucedev/kraai";
 const [getState, setState, subscribe] = createState(0);
 
 subscribe((value) => {
@@ -96,7 +109,34 @@ bun test
 
 ## Contributing
 
-Contributions are welcome! Feel free to open issues or submit pull requests for any improvements or bug fixes.
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a Pull Request.
+
+Please ensure that your code follows our coding standards and includes tests.
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/hsmyc/kraai.git
+cd kraai
+```
+
+1. Install dependencies:
+
+```bash
+bun install
+```
+
+To run the app locally, use:
+
+```bash
+bun run dev
+```
 
 ## License
 
