@@ -1,0 +1,8 @@
+{
+  "name": "@yucedev/kraai",
+  "version": "0.1.0",
+  "exports": "./app/core/statemanager.ts",
+  "publish": {
+    "include": ["./app/core"]
+  }
+}
