@@ -59,8 +59,7 @@ subscribe((value) => {
   console.log("State updated:", value);
 });
 
-setState(1);
-console.log(getState()); // Outputs: 1
+setState(1);// Outputs: 1
 ```
 
 ### Creating a Computed State
